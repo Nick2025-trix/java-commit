@@ -1,1 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: right;
+        }
+
+        button {
+            width: 48%;
+            padding: 10px;
+            margin: 5px 1%;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .operator {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .operator:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .result p {
+            font-size: 16px;
+            color: #333;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Basic Calculator</h2>
+        <label for="num1">Enter first number:</label>
+        <input type="number" id="num1" required><br>
+
+        <label for="num2">Enter second number:</label>
+        <input type="number" id="num2" required><br>
+
+        <button class="operator" onclick="performCalculations()">Calculate</button>
+
+        <div class="result">
+            <h3>Results:</h3>
+            <p id="addition"></p>
+            <p id="subtraction"></p>
+            <p id="multiplication"></p>
+            <p id="division"></p>
+            <p id="remainder"></p>
+        </div>
+    </div>
+
+    <script>
+        function performCalculations() {
+            // Get user inputs
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+
+            // Validate inputs
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Please enter valid numbers.");
+                return;
+            }
+
+            // Perform calculations
+            const add = num1 + num2;
+            const sub = num1 - num2;
+            const mult = num1 * num2;
+            const div = num2 !== 0 ? num1 / num2 : 'Cannot divide by zero';
+            const mod = num2 !== 0 ? num1 % num2 : 'Cannot divide by zero';
+
+            // Display results
+            document.getElementById('addition').textContent = `Addition: ${add}`;
+            document.getElementById('subtraction').textContent = `Subtraction: ${sub}`;
+            document.getElementById('multiplication').textContent = `Multiplication: ${mult}`;
+            document.getElementById('division').textContent = `Division: ${div}`;
+            document.getElementById('remainder').textContent = `Remainder: ${mod}`;
+        }
+    </script>
+</body>
+</html>
 
